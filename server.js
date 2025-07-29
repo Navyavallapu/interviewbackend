@@ -12,15 +12,15 @@ app.use(express.json());
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
-const interviewerRoutes = require('./routes/interviewerRoutes');
 const shortlistRoutes = require('./routes/shortlistRoutes');
+const assignRoutes = require('./routes/assignRoutes'); // ✅ Assign route added
 
 // Use Routes
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/schedules', scheduleRoutes);
 app.use('/api/feedbacks', feedbackRoutes);
-app.use('/api/interviewers', interviewerRoutes);
 app.use('/api/shortlist', shortlistRoutes);
+app.use('/api/assign', assignRoutes); // ✅ Register assign API route
 
 // Root route - Fixes "Cannot GET /"
 app.get('/', (req, res) => {
