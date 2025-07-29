@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const app = express(); // ✅ First declare app
+const app = express();
 
 // Middleware
 app.use(cors());
@@ -21,6 +21,11 @@ app.use('/api/schedules', scheduleRoutes);
 app.use('/api/feedbacks', feedbackRoutes);
 app.use('/api/interviewers', interviewerRoutes);
 app.use('/api/shortlist', shortlistRoutes);
+
+// Root route - Fixes "Cannot GET /"
+app.get('/', (req, res) => {
+  res.send('API is running ✅');
+});
 
 // Start Server
 const PORT = process.env.PORT || 5000;
