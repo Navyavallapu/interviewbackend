@@ -1,11 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const {
-  submitFeedback,
-  getFeedback,
-} = require("../controllers/feedbackController");
+const { submitFeedback } = require('../controllers/feedbackController');
+const pool = require('../db');
 
-router.post("/", submitFeedback);
-router.get("/", getFeedback);
+// POST /api/feedbacks
+router.post('/', submitFeedback);
 
 module.exports = router;
+

@@ -1,23 +1,19 @@
-const pool = require("../db");
+const pool = require('../db');
 
-exports.submitFeedback = async (req, res) => {
-  const { candidate_name, interviewer_name, comments, rating } = req.body;
+// POST /api/feedbacks
+const submitFeedback = async (req, res) => {
+  const { candidate_name, interviewer, feedback } = req.body;
+
   try {
     const result = await pool.query(
-      "INSERT INTO feedbacks (candidate_name, interviewer_name, comments, rating) VALUES ($1, $2, $3, $4) RETURNING *",
-      [candidate_name, interviewer_name, comments, rating]
+      'INSERT INTO feedbacks (candidate_name, interviewer, feedback) VALUES ($1, $2, $3) RETURNING *',
+      [candidate_name, interviewer, feedback]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error('Error submitting feedback:', err);
+    res.status(500).json({ error: 'Failed to submit feedback' });
   }
 };
 
-exports.getFeedback = async (req, res) => {
-  try {
-    const result = await pool.query("SELECT * FROM feedbacks");
-    res.json(result.rows);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
+module.exports = { submitFeedback };

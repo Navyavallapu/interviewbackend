@@ -1,11 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const {
-  getAllInterviewers,
-  updateStatus,
-} = require("../controllers/interviewerController");
+const { getInterviewers } = require('../controllers/interviewerController');
 
-router.get("/", getAllInterviewers);
-router.put("/:id/status", updateStatus);
+// GET /api/interviewers
+router.get('/', getInterviewers);
 
 module.exports = router;

@@ -1,11 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const {
-  markShortlist,
-  getShortlist,
-} = require("../controllers/shortlistController");
+const { submitShortlist, getShortlists } = require('../controllers/shortlistController');
 
-router.post("/", markShortlist);
-router.get("/", getShortlist);
+router.post('/', submitShortlist);
+router.get('/', getShortlists);
 
 module.exports = router;
