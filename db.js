@@ -1,12 +1,11 @@
-// db.js
 const { Pool } = require("pg");
+require("dotenv").config(); 
 
 const pool = new Pool({
-  user:"postgres",
-  host:"localhost",
-  database:"HRMS",
-  password:"cinderella",
-  port:5432,
+  connectionString: process.env.REACT_APP_API_BASE_URL, 
+  ssl: {
+    rejectUnauthorized: false, 
+  },
 });
 
 module.exports = pool;
