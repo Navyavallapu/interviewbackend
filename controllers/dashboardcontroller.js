@@ -1,3 +1,4 @@
+// controllers/dashboardController.js ✅
 const pool = require('../db');
 
 const getDashboardStats = async (req, res) => {
