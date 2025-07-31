@@ -6,7 +6,7 @@ const submitAssign = async (req, res) => {
 
     const result = await pool.query(
       'INSERT INTO assign (candidate_name, interviewer_name) VALUES ($1, $2) RETURNING *',
-      [candidate_name, interviewer_name, date, time]
+      [candidate_name, interviewer_name]
     );
 
     res.status(201).json(result.rows[0]);
