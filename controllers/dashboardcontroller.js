@@ -4,8 +4,8 @@ const pool = require('../db');
 const getDashboardStats = async (req, res) => {
   try {
     const totalResult = await pool.query('SELECT COUNT(*) FROM schedules');
-    const completedResult = await pool.query("SELECT COUNT(*) FROM schedules WHERE status = 'completed'");
-    const pendingResult = await pool.query("SELECT COUNT(*) FROM schedules WHERE status = 'pending'");
+    const completedResult = await pool.query("SELECT COUNT(*) FROM schedules WHERE status = 'Completed'");
+    const pendingResult = await pool.query("SELECT COUNT(*) FROM schedules WHERE status = 'Pending'");
     const shortlistedResult = await pool.query('SELECT COUNT(*) FROM shortlist');
 
     res.json({
