@@ -15,7 +15,7 @@ const getDashboardStats = async (req, res) => {
       shortlisted: parseInt(shortlistedResult.rows[0].count)
     });
   } catch (err) {
-    console.error('Dashboard error:', err);
+    console.error('Dashboard error:', err.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
