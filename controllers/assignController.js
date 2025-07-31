@@ -5,7 +5,7 @@ const submitAssign = async (req, res) => {
     const { candidate_name, interviewer_name, date, time } = req.body;
 
     const result = await pool.query(
-      'INSERT INTO assign (candidate_name, interviewer_name, date, time) VALUES ($1, $2, $3, $4) RETURNING *',
+      'INSERT INTO assign (candidate_name, interviewer_name) VALUES ($1, $2) RETURNING *',
       [candidate_name, interviewer_name, date, time]
     );
 
@@ -18,6 +18,7 @@ const submitAssign = async (req, res) => {
 
 const getAssignments = async (req, res) => {
   try {
+       console.log("Received body:", req.body);
     const result = await pool.query('SELECT * FROM assign ORDER BY id DESC');
     res.status(200).json(result.rows);
   } catch (error) {
