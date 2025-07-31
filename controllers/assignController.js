@@ -18,7 +18,7 @@ const submitAssign = async (req, res) => {
 
 const getAssignments = async (req, res) => {
   try {
-       console.log("Received body:", req.body);
+      
     const result = await pool.query('SELECT * FROM assign ORDER BY id DESC');
     res.status(200).json(result.rows);
   } catch (error) {

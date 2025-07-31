@@ -19,7 +19,7 @@ const addSchedule = async (req, res) => {
 // GET /api/schedules
 const getAllSchedules = async (req, res) => {
   try {
-     console.log("Received Body:", req.body);
+    
 
     const result = await pool.query('SELECT * FROM schedules ORDER BY date, time');
     res.json(result.rows);
