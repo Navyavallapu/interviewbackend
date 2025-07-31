@@ -6,7 +6,7 @@ const getDashboardStats = async (req, res) => {
     const totalResult = await pool.query('SELECT COUNT(*) FROM schedules');
     const completedResult = await pool.query("SELECT COUNT(*) FROM schedules WHERE status = 'completed'");
     const pendingResult = await pool.query("SELECT COUNT(*) FROM schedules WHERE status = 'pending'");
-    const shortlistedResult = await pool.query('SELECT COUNT(*) FROM shortlists');
+    const shortlistedResult = await pool.query('SELECT COUNT(*) FROM shortlist');
 
     res.json({
       totalInterviews: parseInt(totalResult.rows[0].count),
