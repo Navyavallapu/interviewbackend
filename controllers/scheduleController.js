@@ -6,12 +6,12 @@ const addSchedule = async (req, res) => {
 
   try {
     const result = await pool.query(
-      'INSERT INTO schedules (candidate_name, role, date, time) VALUES ($1, $2, $3, $4) RETURNING *',
+      'INSERT INTO schedules(candidate_name, role, date, time) VALUES ($1, $2, $3, $4) RETURNING *',
       [candidate_name, role, date, time]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
-    console.error('Error adding schedule:', err);
+    console.error('Error adding schedule:', err.message);
     res.status(500).json({ error: 'Failed to add schedule' });
   }
 };
@@ -19,6 +19,8 @@ const addSchedule = async (req, res) => {
 // GET /api/schedules
 const getAllSchedules = async (req, res) => {
   try {
+     console.log("Received Body:", req.body);
+
     const result = await pool.query('SELECT * FROM schedules ORDER BY date, time');
     res.json(result.rows);
   } catch (err) {
