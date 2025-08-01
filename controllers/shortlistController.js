@@ -28,4 +28,4 @@ const getShortlists = async (req, res) => {
   }
 };
 
-module.exports = { submitShortlist, getShortlists };
+module.exports = { submitShortlist, getShortlists};
